@@ -9,7 +9,7 @@ from case import TAM_PRIMO
 from chaves import gerarchaves
 #from aes import AES
 
-from oaep import cifra_rsa
+from oaep import cifra_rsa, decifra
 #chave = get_random_bytes(16)
 #aesObject = AES(chave)
 
@@ -76,18 +76,20 @@ def case_3():
     message = b"Exemplo de mensagem"
     messageString = 'Exemplo de mensagem'
     key = get_random_bytes(16)
-    tam_x, tam_x0, tam_p, hash_texto = cifra_rsa(TAM_PRIMO, messageString, chave_privada_b[0], n_b, 32)
-    ciphertext_rsa_a = cifra_rsa(TAM_PRIMO, hash_texto, chave_publica[0], n, 32)
-    ciphertext_rsa_b = cifra_rsa(TAM_PRIMO, message, chave_publica_b[0], n_b, 32)
-
     ciphertext_aes = aes_encrypt(key, message)
+    ciphertext_rsa_b = cifra_rsa(TAM_PRIMO, messageString, chave_publica[0], n_b, 32)
+
+    decryptedSession= decifra(TAM_PRIMO, ciphertext_rsa_b[0], ciphertext_rsa_b[1],ciphertext_rsa_b[2],ciphertext_rsa_b[3], chave_privada[0], chave_privada[1], 32)
+
+    decyptedMessage = aes_decrypt(key, decryptedSession)
 
     print("Caso de uso 3:")
     print("Mensagem original:", message)
     print("Chave AES:", key)
     print("Chave RSA pública A:", chave_publica)
     print("Chave RSA pública B:", chave_publica_b)
-    print("Mensagem cifrada híbrida:", ciphertext_aes, ciphertext_rsa_a, ciphertext_rsa_b)
+    #print("Mensagem cifrada híbrida:", ciphertext_aes, ciphertext_rsa_a, ciphertext_rsa_b)
+    print("Mensagem decryptada",decyptedMessage)
 
 # # Caso de uso 4: Geração de Assinatura de A
 # def case_4():
