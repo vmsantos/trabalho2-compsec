@@ -70,21 +70,24 @@ def case_2():
     print("Chave RSA publica ", chave_publica[0])
 
 # Caso de uso 3: Cifra híbrida (autenticação mútua)
-# def case_3():
-#     n, chave_publica, chave_privada = gerarchaves(TAM_PRIMO)
-#     n_b, chave_publica_b, chave_privada_b = gerarchaves(TAM_PRIMO)
-#     message = b"Exemplo de mensagem"
-#     key = get_random_bytes(16)
-#     ciphertext_rsa_a = cifra_rsa(TAM_PRIMO, message, chave_publica[0], n, 32)
-#     ciphertext_aes = aes_encrypt(key, message)
-#     ciphertext_rsa_a = rsa_encrypt(rsa_key_a.publickey(), rsa_encrypt(rsa_key_b.publickey(), key))
-#     ciphertext_rsa_b = rsa_encrypt(rsa_key_b.publickey(), key)
-#     print("Caso de uso 3:")
-#     print("Mensagem original:", message)
-#     print("Chave AES:", key)
-#     print("Chave RSA pública A:", rsa_key_a.publickey().export_key())
-#     print("Chave RSA pública B:", rsa_key_b.publickey().export_key())
-#     print("Mensagem cifrada híbrida:", ciphertext_aes, ciphertext_rsa_a, ciphertext_rsa_b)
+def case_3():
+    n, chave_publica, chave_privada = gerarchaves(TAM_PRIMO)
+    n_b, chave_publica_b, chave_privada_b = gerarchaves(TAM_PRIMO)
+    message = b"Exemplo de mensagem"
+    messageString = 'Exemplo de mensagem'
+    key = get_random_bytes(16)
+    tam_x, tam_x0, tam_p, hash_texto = cifra_rsa(TAM_PRIMO, messageString, chave_privada_b[0], n_b, 32)
+    ciphertext_rsa_a = cifra_rsa(TAM_PRIMO, hash_texto, chave_publica[0], n, 32)
+    ciphertext_rsa_b = cifra_rsa(TAM_PRIMO, message, chave_publica_b[0], n_b, 32)
+
+    ciphertext_aes = aes_encrypt(key, message)
+
+    print("Caso de uso 3:")
+    print("Mensagem original:", message)
+    print("Chave AES:", key)
+    print("Chave RSA pública A:", chave_publica)
+    print("Chave RSA pública B:", chave_publica_b)
+    print("Mensagem cifrada híbrida:", ciphertext_aes, ciphertext_rsa_a, ciphertext_rsa_b)
 
 # # Caso de uso 4: Geração de Assinatura de A
 # def case_4():
@@ -125,9 +128,9 @@ def case_2():
 
 # Executar todos os casos de uso
 def run_all_cases():
-    case_1()
-    case_2()
-    #case_3()
+    #case_1()
+    #case_2()
+    case_3()
    #case_4()
     #case_5()
 
