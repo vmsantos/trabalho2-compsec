@@ -27,4 +27,5 @@ def checarAssinatura(tam_int: int, texto: bytes, assinatura: bytes, e, n):
     texto = "Hash Original"
     controle(texto, hasho)
 
+
     return hashr == hasho

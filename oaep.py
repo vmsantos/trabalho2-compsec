@@ -70,7 +70,7 @@ def decifraOAEP(tam_primo: int, bloco_x: bytes, bloco_x0:bytes, zeros, tam_int):
     r = xor(bloco_x0, h.digest())
     g = SHA3(r, tam_primo-(tam_primo//tam_int), tam_int)
     texto = xor(bloco_x, g)
-    texto = str(texto)
+    texto = texto.decode('utf-8')
 
     if texto.count('0') >= zeros:
         texto = substitui(texto, '0', '', texto.count('0') - zeros)
