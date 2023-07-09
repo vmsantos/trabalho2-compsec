@@ -17,23 +17,6 @@ from assinatura import assinar, checarAssinatura
 #aesObject = AES(chave)
 
 
-# Geração de chave RSA
-def generate_rsa_key():
-    key = RSA.generate(2048)
-    return key
-
-# Cifração RSA
-def rsa_encrypt(key, plaintext):
-    cipher = PKCS1_OAEP.new(key)
-    ciphertext = cipher.encrypt(plaintext)
-    return ciphertext
-
-# Decifração RSA
-def rsa_decrypt(key, ciphertext):
-    cipher = PKCS1_OAEP.new(key)
-    plaintext = cipher.decrypt(ciphertext)
-    return plaintext
-
 # Cifração AES
 def aes_encrypt(key, plaintext):
     cipher = AES.new(key, AES.MODE_ECB)
@@ -88,7 +71,7 @@ def case_3():
  
     
     decryptedSession= decifra(TAM_PRIMO, ciphertext_rsa_b[0], control,ciphertext_rsa_b[2],ciphertext_rsa_b[3], chave_privada[0], chave_privada[1], 32)
-
+    decryptedSession.lstrip('b')
     decyptedMessage = aes_decrypt(decryptedSession, ciphertext_aes)
 
     print("Caso de uso 3:")
@@ -124,8 +107,8 @@ def case_4():
 def run_all_cases():
     case_1()
     case_2()
-    case_3()
-    #case_4()
+    #case_3()
+    case_4()
 
 # Executar todos os casos de uso
 run_all_cases()
