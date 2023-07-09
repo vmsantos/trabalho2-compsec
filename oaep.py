@@ -34,7 +34,7 @@ def cifraOAEP(tam_primo: int, texto: string, tam_int: int): # OAEP para cifrar
     z1 = tam_primo // (2*tam_int)
     while True:
         zeros+= 1
-        texto+= zero
+        texto+=zero
         if zeros == z1:
             break
     
@@ -57,7 +57,7 @@ def cifraOAEP(tam_primo: int, texto: string, tam_int: int): # OAEP para cifrar
     tam_p = len(x+x0)
     return x + x0, tam_x, tam_x0, tam_p
 
-def cifra(tam_primo: int, texto: string, e, n, tam_int: int): # Cifra RSA com OAEP
+def cifra_rsa(tam_primo: int, texto: string, e, n, tam_int: int): # Cifra RSA com OAEP
     padding_texto, tam_x, tam_x0, tam_p = cifraOAEP(tam_primo, texto, tam_int)
     aux = int.from_bytes(padding_texto, byteorder='big', signed = False)
     hash_texto = pow(aux, e, n)

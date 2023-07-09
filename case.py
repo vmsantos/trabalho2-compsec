@@ -1,5 +1,5 @@
 from chaves import gerarchaves
-from oaep import cifra, decifra
+from oaep import cifra_rsa, decifra
 from assinatura import assinar, checarAssinatura
 from arquivo64 import gerarArquivo, formato64, controle
 import binascii
@@ -33,14 +33,14 @@ def executa():
         print('\nChave Privada (d,n) = ', chave_privada)
 
         e = chave_publica[0]
-        tam_x, tam_x0, tam_p, hash_texto = cifra(TAM_PRIMO, texto, e, n, TAM_INT)
+        tam_x, tam_x0, tam_p, hash_texto = cifra_rsa(TAM_PRIMO, texto, e, n, TAM_INT)
 
         print('\nHash do Texto: ', hash_texto)
         
 
     else:
         e = chave_publica[0]
-        tam_x, tam_x0, tam_p, hash_texto = cifra(TAM_PRIMO, texto, e, n, TAM_INT)
+        tam_x, tam_x0, tam_p, hash_texto = cifra_rsa(TAM_PRIMO, texto, e, n, TAM_INT)
 
         hash_cifratexto = hash_texto.to_bytes(TAM_PRIMO, byteorder='big', signed = False)
 
