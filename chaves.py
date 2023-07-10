@@ -74,8 +74,3 @@ def gerarchaves(tam_chave):
     controle(texto, chave_privada)
 
     return n, chave_publica, chave_privada
-
-# print("É primo: ", primo(65537))
-# print("Chave: ", gerarchaves(1024))
-
-    
