@@ -91,7 +91,7 @@ def case_3():
     print("Chave RSA pública B:", chave_publica_b[0])
     print('\x1b[0;0;92m' + 'Mensagem decifrada: ' + '\x1b[0m', decyptedMessage)
 
-# Caso de uso 4: Geração de Assinatura de A
+# Caso de uso 4 e 5: Geração e verificaçao de Assinatura de A
 
 
 def case_4():
