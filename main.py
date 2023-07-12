@@ -1,7 +1,7 @@
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 from Crypto.Util.Padding import pad, unpad
-from chaves import gerarchaves
+from gerachaves import gerarchaves
 from rsa import cifra_rsa, decifra
 from ass import assinar, checarAssinatura
 from a64 import gerarArquivo, formato64
