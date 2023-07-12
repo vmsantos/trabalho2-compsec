@@ -1,7 +1,7 @@
 import random
-from arquivo64 import controle
+from a64 import controle
 
-# Realiza o teste de Miller-Rabin
+# Miller-Rabin
 def primo(n, k=40):
     if n == 2 or n == 3:
         return True
@@ -24,14 +24,13 @@ def primo(n, k=40):
             return False
     return True
 
-# Euclides máximo divisor comum
+# GCD
 def gcd(a, b): 
     while b != 0:
         a, b = b, a % b
     return a
 
-# Gerar Chave Pública e Chave Privada
-# tam_chave = 1024
+# Chaves pública e privada
 
 def gerarchaves(tam_chave):
     d = 0

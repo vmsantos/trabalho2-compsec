@@ -2,9 +2,9 @@ from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 from Crypto.Util.Padding import pad, unpad
 from chaves import gerarchaves
-from oaep import cifra_rsa, decifra
-from assinatura import assinar, checarAssinatura
-from arquivo64 import gerarArquivo, formato64
+from rsa import cifra_rsa, decifra
+from ass import assinar, checarAssinatura
+from a64 import gerarArquivo, formato64
 
 TAM_PRIMO = 1024
 TAM_INT = 32

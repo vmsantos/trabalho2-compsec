@@ -1,6 +1,6 @@
 import hashlib
 import math
-from arquivo64 import controle
+from a64 import controle
 
 def assinar(texto: bytes, d, n):
     h = hashlib.sha3_256(texto)
