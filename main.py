@@ -109,7 +109,7 @@ def case_4():
     checar_assinatura = checarAssinatura(
         TAM_INT,  ciphertext_aes, assinatura, chave_publica[0], n)
     print('\x1b[0;0;92m' + 'Assinatura Verificada: ' + '\x1b[0m', checar_assinatura)
-    gerarArquivo(chave_publica[0], chave_privada[0], assinatura)
+ #   gerarArquivo(chave_publica[0], chave_privada[0], assinatura)
     
 
 # Executar todos os casos de uso
